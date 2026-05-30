@@ -1,3 +1,5 @@
 .venv
 *.toml
 *.lock
+catboost_info
+.ipynb_checkpoints

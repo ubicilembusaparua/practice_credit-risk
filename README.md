@@ -4,7 +4,7 @@ This repository contains an end-to-end machine learning pipeline for evaluating 
 
 ---
 
-## 📌 1. Context: The Business Problem
+## 📌 1. Problem Statement & Objectives
 
 * **The Situation:** Financial institutions rely heavily on credit scoring frameworks to evaluate applicant creditworthiness. In this case, we utilize the classic Statlog German Credit Dataset (1,000 applicants) to classify borrowers into risky or non-risky categories.
 * **The Problem:** Misclassifying a high-risk applicant (*Bad Credit*) costs significantly more than turning away a creditworthy customer. Traditional classifiers optimize for global accuracy, failing to capture complex non-linear default risk.
@@ -13,7 +13,7 @@ This repository contains an end-to-end machine learning pipeline for evaluating 
 
 ---
 
-## 🛠️ 2. Action: Engineering & Modular Pipeline
+## 🛠️ 2. Methodology
 
 To prevent data leakage and guarantee technical reproducibility, the notebook executes the following precise machine learning workflow:
 
@@ -24,7 +24,7 @@ To prevent data leakage and guarantee technical reproducibility, the notebook ex
 
 ---
 
-## 📊 3. Result: Technical Evaluation & Benchmark
+## 📊 3. Performance Evaluation & Benchmark
 
 All four models were evaluated on the holdout test set ($N=200$). Below is the comprehensive technical breakdown of their predictive capabilities:
 
@@ -37,5 +37,12 @@ All four models were evaluated on the holdout test set ($N=200$). Below is the c
 
 ### 📈 ROC Curve Trajectory Analysis
 The models demonstrate strong discriminatory capabilities overall, with CatBoost leading the global separation metric at an **AUC of 0.8250**, followed closely by AdaBoost at **0.8137**.
-![ROC Curve Comparison](images/roc_curve.png)
-*Figure 1: ROC Curve trajectory demonstrating the competitive global separation power of CatBoost (0.8250) and AdaBoost (0.8137) on the test set.*
+![ROC Curve Comparison](roc_curve.png)
+
+## 💡 4. Insights
+
+* **The Accuracy vs. Recall Paradox:** While CatBoost scored the highest global accuracy (79%) and best separation power (AUC: 0.825), it only captured 42% of actual defaults. In a real-world credit risk scenario, LightGBM is the commercially superior model; by introducing cost-sensitive training (is_unbalance=True), it captured 63% of default cases (Class 1 Recall), shielding the bank from massive credit defaults.
+
+* **Ensemble Architecture Strengths:**  CatBoost and AdaBoost natively resist noise and capture global structures well, making them ideal if the bank wants to prioritize precision (reducing false alarms for good customers). LightGBM and XGBoost show much higher flexibility in shifting their weights towards the minority class, which is vital for conservative risk-averse lending strategies.
+
+* **Pipeline Standardization:** Feature processing should always follow absolute isolation. Fitting the OneHotEncoder strictly on the training set ensures the model remains robust when faced with unseen or missing category strings during production inference.

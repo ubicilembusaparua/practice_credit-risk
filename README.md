@@ -37,3 +37,5 @@ All four models were evaluated on the holdout test set ($N=200$). Below is the c
 
 ### 📈 ROC Curve Trajectory Analysis
 The models demonstrate strong discriminatory capabilities overall, with CatBoost leading the global separation metric at an **AUC of 0.8250**, followed closely by AdaBoost at **0.8137**.
+![ROC Curve Comparison](images/roc_curve.png)
+*Figure 1: ROC Curve trajectory demonstrating the competitive global separation power of CatBoost (0.8250) and AdaBoost (0.8137) on the test set.*

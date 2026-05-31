@@ -30,7 +30,7 @@ All four models were evaluated on the holdout test set ($N=200$). Below is the c
 
 | Model Architecture | Global Accuracy | Class 1 (Bad) Precision | Class 1 (Bad) Recall | Test ROC-AUC Score |
 | :--- | :---: | :---: | :---: | :---: |
-| **AdaBoost** | 77% | 0.63 | 531% | 0.8175 |
+| **AdaBoost** | 77% | 0.63 | 53% | 0.8175 |
 | **CatBoost** | **81%** | **0.79** | 51% | **0.8380** |
 | **XGBoost** | 78% | 0.66 | 53% | 0.8234 |
 | **LightGBM**| 79% | 0.64 | **64%** | 0.8297 |

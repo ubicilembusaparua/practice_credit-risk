@@ -1,4 +1,4 @@
-# Statlog German Credit Risk Modeling: Imbalanced Classification Benchmarking
+# Statlog German Credit Risk Modeling
 
 This repository contains an end-to-end machine learning pipeline for evaluating credit risk using the **Statlog German Credit Dataset**. The project implements a rigorous preprocessing and benchmarking pipeline comparing four state-of-the-art tree-based ensemble algorithms to optimize default prediction under severe class imbalance.
 

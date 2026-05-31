@@ -30,18 +30,18 @@ All four models were evaluated on the holdout test set ($N=200$). Below is the c
 
 | Model Architecture | Global Accuracy | Class 1 (Bad) Precision | Class 1 (Bad) Recall | Test ROC-AUC Score |
 | :--- | :---: | :---: | :---: | :---: |
-| **AdaBoost** | 77% | **0.67** | 41% | 0.8137 |
-| **CatBoost** | **79%** | 0.76 | 42% | **0.8250** |
-| **XGBoost** | 74% | 0.58 | 51% | 0.7919 |
-| **LightGBM**| 73% | 0.54 | **63%** | 0.7942 |
+| **AdaBoost** | 77% | 0.63 | 531% | 0.8175 |
+| **CatBoost** | **81%** | **0.79** | 51% | **0.8380** |
+| **XGBoost** | 78% | 0.66 | 53% | 0.8234 |
+| **LightGBM**| 79% | 0.64 | **64%** | 0.8297 |
 
 ### 📈 ROC Curve Trajectory Analysis
-The models demonstrate strong discriminatory capabilities overall, with CatBoost leading the global separation metric at an **AUC of 0.8250**, followed closely by AdaBoost at **0.8137**.
+The models demonstrate strong discriminatory capabilities overall, with CatBoost leading the global separation metric at an **AUC of 0.8380**, followed closely by LightGBM at **0.8297**.
 ![ROC Curve Comparison](roc_curve.png)
 
 ## 💡 4. Insights
 
-* **The Accuracy vs. Recall Paradox:** While CatBoost scored the highest global accuracy (79%) and best separation power (AUC: 0.825), it only captured 42% of actual defaults. In a real-world credit risk scenario, LightGBM is the commercially superior model; by introducing cost-sensitive training (is_unbalance=True), it captured 63% of default cases (Class 1 Recall), shielding the bank from massive credit defaults.
+* **The Accuracy vs. Recall Paradox:** While CatBoost scored the highest global accuracy (79%) and best separation power (AUC: 0.838), it only captured 42% of actual defaults. In a real-world credit risk scenario, LightGBM is the commercially superior model; by introducing cost-sensitive training (is_unbalance=True), it captured 64% of default cases (Class 1 Recall), shielding the bank from massive credit defaults.
 
 * **Ensemble Architecture Strengths:**  CatBoost and AdaBoost natively resist noise and capture global structures well, making them ideal if the bank wants to prioritize precision (reducing false alarms for good customers). LightGBM and XGBoost show much higher flexibility in shifting their weights towards the minority class, which is vital for conservative risk-averse lending strategies.
 
